@@ -14,6 +14,7 @@ const ReviewForm = ({getEmployee}) => {
     const [behavior,setBehavior]=useState(0);
     const [punctuality,setPunctuality]=useState(0);
     const [workEthic,setWorkEthic]=useState(0);
+    const base_url = process.env.REACT_APP_API_PATH||'';
 
     const handleBehavior=(rate)=>setBehavior(rate);
     const handlePunctuality=(rate)=>setPunctuality(rate);
@@ -42,7 +43,7 @@ const ReviewForm = ({getEmployee}) => {
             review:formData.get('review'),
         }
         console.log(data);
-        axios.post('/employee/create-review',data,{headers:{"Content-Type": "application/x-www-form-urlencoded"},withCredentials:true}).then((res)=>{
+        axios.post(`${base_url}/employee/create-review`,data,{headers:{"Content-Type": "application/x-www-form-urlencoded"},withCredentials:true}).then((res)=>{
             console.log(res.data);
             handleCancel();
             toast.success('Review Submitted Successfully');

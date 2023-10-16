@@ -24,8 +24,10 @@ const Employee = () => {
 
     const { formVisible } = useReviewFormContext();
 
+    const base_url = process.env.REACT_APP_API_PATH||'';
+
     const getEmployee=()=>{
-        axios.get(`/employee/profile/${id}`,{withCredentials:true})
+        axios.get(`${base_url}/employee/profile/${id}`,{withCredentials:true})
         .then((res)=>{
             console.log(res.data.employee);
             setActiveEmployeeContext(res.data.employee);

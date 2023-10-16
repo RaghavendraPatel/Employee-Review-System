@@ -7,8 +7,9 @@ import axios from 'axios'
 const Home = () => {
     const { user, setActiveUser } = useUserContext();
     const navigate = useNavigate();
-
+    const base_url = process.env.REACT_APP_API_PATH||'';
     useEffect(() => {
+        console.log(base_url)
         if (!user) {
             toast.error("Please Login First");
             navigate("/signin");

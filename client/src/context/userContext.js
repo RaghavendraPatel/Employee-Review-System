@@ -9,6 +9,7 @@ const UserContext = createContext();
 // Create Provider for User
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const base_url = process.env.REACT_APP_API_PATH || "";
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -26,7 +27,7 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem("user");
     setUser(null);
     try {
-      axios.get("/user/destroy-session").then((res) => {
+      axios.get(`${base_url}/user/destroy-session`).then((res) => {
         console.log(res.data);
         toast.success("Logged out successfully!");
       });

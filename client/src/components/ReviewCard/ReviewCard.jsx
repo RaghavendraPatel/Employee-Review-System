@@ -9,9 +9,10 @@ const ReviewCard = (props) => {
     const [user,setUser]=useState({});
     const [review,setReview]=useState({});
     const navigate=useNavigate();
+    const base_url = process.env.REACT_APP_API_PATH||'';
 
     const getEmployee=(id)=>{
-        axios.get(`/employee/profile/${id}`,{withCredentials:true})
+        axios.get(`${base_url}/employee/profile/${id}`,{withCredentials:true})
         .then((res)=>{
             console.log('employee',res.data.employee);
             setUser(res.data.employee);
@@ -21,7 +22,7 @@ const ReviewCard = (props) => {
         })
     }
     const getReview=(id)=>{
-        axios.get(`/review/${id}`,{withCredentials:true})
+        axios.get(`${base_url}/review/${id}`,{withCredentials:true})
         .then((res)=>{
             console.log('review',res.data);
             setReview(res.data);
@@ -51,7 +52,7 @@ const ReviewCard = (props) => {
                 <div className="review__header__info" onClick={handleRedirect} >
                     <img src="https://i.pinimg.com/736x/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.jpg" alt="profile_pic" />
                     <div className="review__header__name">
-                        <h4>{user.name}</h4>
+                        <h4 style={{textTransform:"capitalize"}}>{user.name}</h4>
                         <p>{user.email}</p>
                     </div>
                 </div>

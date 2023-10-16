@@ -5,11 +5,11 @@ import "./editEmployee.scss"
 
 const EditEmployee = ({getEmployees}) => {
     const { 
-        activeEmployeeEditForm,
         setActiveEmployeeEditForm,
         employeeEditFormFor,
         setEmployeeEditFormFor,
     } = useActiveEmployeeContext();
+    const base_url = process.env.REACT_APP_API_PATH||'';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ const EditEmployee = ({getEmployees}) => {
             userid: employeeEditFormFor.userid,
             ...Object.fromEntries(formData),
         }
-        axios.post("/admin/edit", data, {
+        axios.post(`${base_url}/admin/edit`, data, {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },

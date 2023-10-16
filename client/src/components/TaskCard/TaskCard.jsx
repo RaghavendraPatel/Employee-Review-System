@@ -14,9 +14,10 @@ const TaskCard = ({ task ,setActiveTab}) => {
     const {user}=useUserContext();
     const {setFormVisible,setFormFor}=useReviewFormContext();
     const {id}=useParams();
+    const base_url = process.env.REACT_APP_API_PATH||'';
 
     const getEmployee=(id)=>{
-        axios.get(`/employee/profile/${id}`,{withCredentials:true})
+        axios.get(`${base_url}/employee/profile/${id}`,{withCredentials:true})
         .then((res)=>{
             console.log('employee',res.data.employee);
             setEmployee(res.data.employee);

@@ -10,6 +10,7 @@ const AssignTask = ({employees}) => {
         assignFormFor,
         setAssignFormForContext, 
     } = useActiveEmployeeContext();
+    const base_url = process.env.REACT_APP_API_PATH||'';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +20,7 @@ const AssignTask = ({employees}) => {
         }
         console.log(e.target.task.value);
         console.log(employees)
-        axios.post(`/admin/assign`, 
+        axios.post(`${base_url}/admin/assign`, 
             {
                 to : e.target.task.value,   
                 from : assignFormFor._id,

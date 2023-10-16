@@ -12,6 +12,7 @@ const Signup = () => {
     const { user } = useUserContext();
 
     const navigate = useNavigate();
+    const base_url = process.env.REACT_APP_API_PATH||'';
 
     useEffect(() => {
         console.log(user)
@@ -25,7 +26,7 @@ const Signup = () => {
         e.preventDefault();
         const data = { email:email, password:password, name:name };
         try {
-            axios.post("/user/create", data,
+            axios.post(`${base_url}/user/create`, data,
             { 
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",

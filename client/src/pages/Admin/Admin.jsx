@@ -14,25 +14,16 @@ const Admin = () => {
     const { user, logout } = useUserContext();
     const navigate = useNavigate();
     const [employees, setEmployees] = useState([]);
-    
+    const base_url = process.env.REACT_APP_API_PATH||'';
+
     const { 
-        activeEmployee, 
-        setActiveEmployeeContext, 
-        activeEmployeeOptions,
-        setActiveEmployeeOptionsContext,
         activeAssignForm,
-        setActiveAssignFormContext,
-        assignFormFor,
-        setAssignFormForContext, 
         activeEmployeeEditForm,
-        setActiveEmployeeEditForm,
-        employeeEditFormFor,
-        setEmployeeEditFormFor,
     } = useActiveEmployeeContext();
 
     const getEmployees = async () => {
         try {
-            const res = await axios.get("/admin/employees");
+            const res = await axios.get(`${base_url}/admin/employees`, { withCredentials: true });
             console.log(res.data.data.employees);
             setEmployees(res.data.data.employees);
         } catch (err) {

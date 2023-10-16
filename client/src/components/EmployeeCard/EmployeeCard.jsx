@@ -12,23 +12,19 @@ import { useNavigate } from 'react-router-dom';
 const EmployeeCard = ({ employee }) => {
 
     const { 
-        activeEmployee, 
         setActiveEmployeeContext, 
         activeEmployeeOptions,
         setActiveEmployeeOptionsContext,
-        activeAssignForm,
         setActiveAssignFormContext,
-        assignFormFor,
         setAssignFormForContext, 
-        activeEmployeeEditForm,
         setActiveEmployeeEditForm,
-        employeeEditFormFor,
         setEmployeeEditFormFor,
     } = useActiveEmployeeContext();
 
     const { user } = useUserContext();
 
     const navigate = useNavigate();
+    const base_url = process.env.REACT_APP_API_PATH||'';
 
     window.onclick = function(event) {
 
@@ -59,7 +55,7 @@ const EmployeeCard = ({ employee }) => {
     const handlePromote = () => {
         if(employee.role === "employee") {
             employee.role = "admin";
-            axios.get(`/admin/promote/${employee.userid}`)
+            axios.get(`${base_url}/admin/promote/${employee.userid}`)
             .then((res) => {
                 console.log(res.data);
                 toast.success("Employee Promoted to Admin");
@@ -71,7 +67,7 @@ const EmployeeCard = ({ employee }) => {
         }
         else {
             employee.role = "employee";
-            axios.get(`/admin/demote/${employee.userid}`)
+            axios.get(`${base_url}/admin/demote/${employee.userid}`)
             .then((res) => {
                 console.log(res.data);
                 toast.success("Admin Demoted to Employee");
@@ -99,7 +95,7 @@ const EmployeeCard = ({ employee }) => {
         navigate(`/employee/${employee._id}`);
     }
     const handleRemove = () => {
-        axios.get(`/admin/remove/${employee.userid}`, {withCredentials: true})
+        axios.get(`${base_url}/admin/remove/${employee.userid}`, {withCredentials: true})
         .then((res) => {
             console.log(res.data);
             toast.success("Employee Removed");

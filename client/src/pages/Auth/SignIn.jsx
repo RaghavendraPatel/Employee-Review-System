@@ -12,6 +12,8 @@ const SignIn = () => {
 
     const { user, setActiveUser } = useUserContext();
 
+    const base_url = process.env.REACT_APP_API_PATH||'';
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,7 +27,7 @@ const SignIn = () => {
         e.preventDefault();
         const data = { email:email, password:password };
         try {
-            axios.post("/user/create-session", data,
+            axios.post(`${base_url}/user/create-session`, data,
             { 
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
