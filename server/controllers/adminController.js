@@ -50,27 +50,27 @@ module.exports.getEmployees = async function (req, res) {
 //Access: Only admin can access this route
 module.exports.promote = async function (req, res) {
   console.log(req.params.id);
-  try {
-    //find user by id
-    const user = await User.findById(req.params.id);
-    //if user not found return 404
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found",
-      });
-    }
-    //promote user to admin
-    user.role = "admin";
-    await user.save();
-    return res.status(200).json({
-      message: "User promoted successfully",
-    });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).json({
-      message: "Internal Server Error, Cannot promote user",
-    });
-  }
+  // try {
+  //   //find user by id
+  //   const user = await User.findById(req.params.id);
+  //   //if user not found return 404
+  //   if (!user) {
+  //     return res.status(404).json({
+  //       message: "User not found",
+  //     });
+  //   }
+  //   //promote user to admin
+  //   user.role = "admin";
+  //   await user.save();
+  //   return res.status(200).json({
+  //     message: "User promoted successfully",
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  //   return res.status(500).json({
+  //     message: "Internal Server Error, Cannot promote user",
+  //   });
+  // }
 };
 
 //Desc: Demote user to employee
