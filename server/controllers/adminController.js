@@ -49,6 +49,7 @@ module.exports.getEmployees = async function (req, res) {
 //Route: GET /admin/promote/:id
 //Access: Only admin can access this route
 module.exports.promote = async function (req, res) {
+  console.log(req.params.id);
   try {
     //find user by id
     const user = await User.findById(req.params.id);
