@@ -55,7 +55,7 @@ const EmployeeCard = ({ employee }) => {
     const handlePromote = () => {
         if(employee.role === "employee") {
             employee.role = "admin";
-            axios.get(`${base_url}/admin/promote/${employee.userid}`)
+            axios.get(`${base_url}/admin/promote/${employee.userid}`, {withCredentials: true})
             .then((res) => {
                 console.log(res.data);
                 toast.success("Employee Promoted to Admin");
@@ -67,7 +67,7 @@ const EmployeeCard = ({ employee }) => {
         }
         else {
             employee.role = "employee";
-            axios.get(`${base_url}/admin/demote/${employee.userid}`)
+            axios.get(`${base_url}/admin/demote/${employee.userid}`, {withCredentials: true})
             .then((res) => {
                 console.log(res.data);
                 toast.success("Admin Demoted to Employee");
