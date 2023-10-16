@@ -1,0 +1,151 @@
+.employee{
+    box-sizing: border-box;
+    .employee__header{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 40px;
+        align-items: center;
+        background-color: #707070;
+        color: white;
+        border-bottom: 1px solid #616060;
+        .employee__header__buttons{
+            display: flex;
+            gap:20px;
+            button{
+                background-color: #383838;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                &:hover{
+                    background-color: #4d4d4d;
+                }
+            }
+        }
+    }
+    .employee__details{
+        display: flex;
+        padding: 30px 100px;
+        align-items: center;
+        img{
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            margin-right: 20px;
+            border:1px solid #616060;
+        }
+        .employee__details__info{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-transform: capitalize;
+            .rating {
+                display: flex;
+                gap: 5px;
+            }
+            .employee-name p{
+                text-transform: lowercase;
+            }
+        }
+    }
+    .employee__reviews{
+        display: flex;
+        flex-direction: column;
+        padding: 50px 100px;
+        gap: 10px;
+        .employee__reviews__header{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-bottom: 3px solid #49b9e6;
+            .review-btn{
+                background-color: #e6e5e5;;
+                border: none;
+                border-bottom: 3px solid #e6e5e5;
+                padding: 10px;
+                color: rgb(0, 0, 0);
+                font-weight: bold;
+                cursor: pointer;
+                &:hover{
+                    background-color: #c2c2c2;
+                    border-bottom: 3px inset #49b9e6 ;
+                }
+            }
+
+            .active{
+                background-color: #91dcff;
+                border-bottom: 3px solid #49b9e6 ;
+                color: white;
+            }
+        }
+        .empty{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #616060;
+        }
+        .review-list{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .review{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                padding: 10px;
+                // border: 1px solid #616060;
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                border-radius: 5px;
+                .review__header{
+                    display: flex;
+                    flex-direction: column;
+                    .review__header__info{
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        img{
+                            width: 50px;
+                            height: 50px;
+                        }
+
+                    }
+                    .review__header__rating{
+                        display: flex;
+                        justify-content: center;
+                        gap: 35px;
+                        .circular-rating{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 10px;
+                            .rating-circle{
+                                width: 75px;
+                                height: 75px;
+                            }
+                            p{
+                                font-size: 16px;
+                                font-weight: bold;
+                                color: #1d87b1 ;
+                            }
+                        }
+                    }
+                }
+                .review__body{
+                    padding: 20px 50px;
+                    p::first-letter{
+                        text-transform: uppercase;
+                    }
+                    p{
+                        text-indent: 2rem;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+}
