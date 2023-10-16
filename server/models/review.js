@@ -40,11 +40,5 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
-reviewSchema.pre("save", function (next) {
-  this.overall_rating =
-    (this.punctuality + this.work_ethics + this.behavior) / 3;
-  next();
-});
-
 const Review = mongoose.model("Review", reviewSchema);
 module.exports = Review;

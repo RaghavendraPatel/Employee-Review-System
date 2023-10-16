@@ -31,6 +31,7 @@ passport.serializeUser(function (user, done) {
   done(null, {
     id: user._id,
     role: user.role,
+    email: user.email,
   });
 });
 

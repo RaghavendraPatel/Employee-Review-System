@@ -18,18 +18,26 @@ const cookieParser = require("cookie-parser");
 
 app.use(express.json());
 app.use(cookieParser());
+//set up cors to allow us to accept requests from our client
+const cors = require("cors");
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 //configure express session
 app.use(
   session({
-    name: "user",
-    secret: process.env.SESSION_SECRET || "secret",
-    saveUninitialized: false,
+    name: "user", //name of the cookie
+    secret: process.env.SESSION_SECRET || "secret", //encryption key
+    saveUninitialized: false, //if user is not logged in, do not save the session
     resave: false,
     cookie: {
-      sameSite: "lax",
-      secure: false,
-      maxAge: 1000 * 60 * 60 * 24,
+      // sameSite: "lax",
+      sameSite: "none",
+      secure: true,
       httpOnly: true,
     },
   })
